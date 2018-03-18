@@ -1,5 +1,6 @@
 package com.werureo.trailguide.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -27,5 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = CategoryAdapter(this, categories)
         recyclerView.adapter = adapter
+
+        appInfoBtn.setOnClickListener {
+            val intent = Intent(this, AppInfoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

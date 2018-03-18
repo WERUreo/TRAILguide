@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TRAILguide</string>
+    <string name="app_purpose">This app is built as a Final Project\nfor the\nDevslopes Android Beginner Track</string>
+    <string name="devslopes_logo">Devslopes Logo</string>
+    <string name="back_to_the_app">Back to the App</string>
+    <string name="credits">Artwork supplied by:\nVectors Market\nAnbileru Adaleru\nAndrejs Kirma</string>
 </resources>
