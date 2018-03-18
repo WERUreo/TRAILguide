@@ -6,18 +6,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.werureo.trailguide.R
 import com.werureo.trailguide.adapters.CategoryAdapter
-import com.werureo.trailguide.models.Category
+import com.werureo.trailguide.services.DataService.categories
+import com.werureo.trailguide.utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-    private val categories: List<Category> = listOf(
-            Category("Hiking", "hiking_image"),
-            Category("Camping", "camping_image"),
-            Category("Diving", "diving_image"),
-            Category("Surfing", "surfing_image"),
-            Category("Fishing", "fishing_image")
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +19,11 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
-        val adapter = CategoryAdapter(this, categories)
+        val adapter = CategoryAdapter(this, categories) { category ->
+            val intent = Intent(this, CategoryItemsActivity::class.java)
+            intent.putExtra(EXTRA_CATEGORY, category.name)
+            startActivity(intent)
+        }
         recyclerView.adapter = adapter
 
         appInfoBtn.setOnClickListener {

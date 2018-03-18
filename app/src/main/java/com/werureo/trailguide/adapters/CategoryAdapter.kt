@@ -7,23 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.werureo.trailguide.R
 import com.werureo.trailguide.models.Category
-import kotlinx.android.synthetic.main.activity_list_item.view.*
+import kotlinx.android.synthetic.main.category_list_item.view.*
 
 
 class CategoryAdapter(
         private val context: Context,
-        private val categories: List<Category>
+        private val categories: List<Category>,
+        private val itemClick: (Category) -> Unit
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): CategoryAdapter.ViewHolder {
         val view = LayoutInflater
                 .from(parent?.context)
                 .inflate(
-                        R.layout.activity_list_item,
+                        R.layout.category_list_item,
                         parent,
                         false
                 )
-        return ViewHolder(view)
+        return ViewHolder(view, itemClick)
     }
 
     override fun getItemCount() = categories.count()
@@ -32,7 +33,10 @@ class CategoryAdapter(
         holder?.bind(categories[position])
     }
 
-    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(
+            itemView: View?,
+            val itemClick: (Category) -> Unit
+    ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(category: Category) {
             itemView?.categoryName?.text = category.name
@@ -44,6 +48,7 @@ class CategoryAdapter(
             )
 
             itemView?.categoryImage?.setImageResource(resourceId)
+            itemView.setOnClickListener { itemClick(category) }
         }
 
     }
