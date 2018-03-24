@@ -26,7 +26,13 @@ class CategoryItemsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val layoutManager = GridLayoutManager(this, 2)
+        var spanCount = 2
+        val screenSize = resources.configuration.screenWidthDp
+        if (screenSize > 720) {
+            spanCount = 4
+        }
+
+        val layoutManager = GridLayoutManager(this, spanCount)
 
         gridView.adapter = adapter
         gridView.layoutManager = layoutManager
