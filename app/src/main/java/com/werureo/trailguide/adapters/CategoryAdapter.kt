@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.werureo.trailguide.R
 import com.werureo.trailguide.models.Category
+import com.werureo.trailguide.utilities.ImageHelper
 import kotlinx.android.synthetic.main.category_list_item.view.*
 
 
@@ -41,10 +42,9 @@ class CategoryAdapter(
         fun bind(category: Category) {
             itemView?.categoryName?.text = category.name
 
-            val resourceId = context.resources.getIdentifier(
-                    category.image,
-                    "drawable",
-                    context.packageName
+            val resourceId = ImageHelper.getImageFromName(
+                    context,
+                    category.image
             )
 
             itemView?.categoryImage?.setImageResource(resourceId)

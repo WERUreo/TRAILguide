@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.werureo.trailguide.R
 import com.werureo.trailguide.models.CategoryItem
+import com.werureo.trailguide.utilities.ImageHelper
 import kotlinx.android.synthetic.main.category_item_list_item.view.*
 
 
@@ -32,10 +33,9 @@ class CategoryItemsAdapter(
             private val itemClick: (CategoryItem) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: CategoryItem) {
-            val resourceId = context.resources.getIdentifier(
-                    item.image,
-                    "drawable",
-                    context.packageName
+            val resourceId = ImageHelper.getImageFromName(
+                    context,
+                    item.image
             )
             itemView?.categoryItemImage?.setImageResource(resourceId)
             itemView.setOnClickListener { itemClick(item) }
