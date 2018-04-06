@@ -4,7 +4,7 @@
     <string name="devslopes_logo">Devslopes Logo</string>
     <string name="back_to_the_app">Back to the App</string>
     <string name="credits">Artwork supplied by:\nVectors Market\nAnbileru Adaleru\nAndrejs Kirma</string>
-    <string name="category_title">%1$s Gear</string>
+    <string name="category_title">%s Gear</string>
     <string name="category_image">Category Image</string>
     <string name="amazon_button_text">See on Amazon</string>
     <string name="background_image">background image</string>

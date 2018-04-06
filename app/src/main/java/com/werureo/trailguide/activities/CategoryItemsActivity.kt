@@ -1,11 +1,13 @@
 package com.werureo.trailguide.activities
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import com.werureo.trailguide.R
 import com.werureo.trailguide.adapters.CategoryItemsAdapter
+import com.werureo.trailguide.models.CategoryItem
 import com.werureo.trailguide.services.DataService
 import com.werureo.trailguide.utilities.EXTRA_CATEGORY
 import com.werureo.trailguide.utilities.EXTRA_CATEGORY_ITEM
@@ -21,14 +23,14 @@ class CategoryItemsActivity : AppCompatActivity() {
 
         val categoryType = intent.getStringExtra(EXTRA_CATEGORY)
         adapter = CategoryItemsAdapter(this, DataService.getCategoryItems(categoryType)) { categoryItem ->
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra(EXTRA_CATEGORY_ITEM, categoryItem)
-            startActivity(intent)
+            launchActivity(categoryItem)
         }
 
+        var layout = resources.configuration.screenLayout
+        layout = layout and Configuration.SCREENLAYOUT_SIZE_MASK
+
         var spanCount = 2
-        val screenSize = resources.configuration.screenWidthDp
-        if (screenSize > 720) {
+        if (layout == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
             spanCount = 4
         }
 
@@ -38,6 +40,13 @@ class CategoryItemsActivity : AppCompatActivity() {
         gridView.layoutManager = layoutManager
         gridView.setHasFixedSize(true)
 
+//        categoryText?.text = "$categoryType Gear"
         categoryText?.text = getString(R.string.category_title, categoryType)
+    }
+
+    private fun launchActivity(category: CategoryItem) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(EXTRA_CATEGORY_ITEM, category)
+        startActivity(intent)
     }
 }

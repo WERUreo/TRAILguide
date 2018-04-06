@@ -50,6 +50,5 @@ class CategoryAdapter(
             itemView?.categoryImage?.setImageResource(resourceId)
             itemView.setOnClickListener { itemClick(category) }
         }
-
     }
 }
