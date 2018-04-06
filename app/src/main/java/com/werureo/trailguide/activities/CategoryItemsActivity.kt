@@ -40,7 +40,6 @@ class CategoryItemsActivity : AppCompatActivity() {
         gridView.layoutManager = layoutManager
         gridView.setHasFixedSize(true)
 
-//        categoryText?.text = "$categoryType Gear"
         categoryText?.text = getString(R.string.category_title, categoryType)
     }
 
