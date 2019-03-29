@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryItemName"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et egestas justo. Pellentesque pretium ac mi ut ultrices. Donec ante orci, pharetra eu ipsum vitae, consequat commodo leo. Proin tellus dolor, rhoncus a mauris eget, vestibulum imperdiet leo. Etiam porta." />
+        tools:text="@sample/tools:lorem/random" />
 
     <Button
         android:id="@+id/amazonButton"
